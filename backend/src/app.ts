@@ -1,13 +1,13 @@
 import express, { Request, Response } from "express";
-import { getAsset } from "./controllers/assetController";
+import router from "./routs";
 
 function createApp() {
 
     const app = express();
     app.use(express.json());
 
-    app.get("/", getAsset);
-return app;
+    app.use("/api", router)
+    return app;
 }
 
 
