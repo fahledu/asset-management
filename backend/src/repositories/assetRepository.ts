@@ -1,7 +1,5 @@
-interface AssetModel {
-    id: number;
-    name: string;
-}
+import { AssetModel } from "../models/assetModels";
+
 
 const database: AssetModel[] = [
     { id: 1, name: "tablet" },
