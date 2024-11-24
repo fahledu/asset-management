@@ -1,5 +1,5 @@
 import * as AssetRepository from "../repositories/assetRepository";
-import { noContent, ok } from "../utils/httpHelper";
+import * as HttpResponse from "../utils/httpHelper";
 
 export const getAssetService = async () => {
     let response = null;
@@ -7,9 +7,23 @@ export const getAssetService = async () => {
     const data = await AssetRepository.findAllAssets();
     
     if (data) {
-        response = await ok(data);
+        response = await HttpResponse.ok(data);
     }else{
-        response = await noContent()
+        response = await HttpResponse.noContent()
+    }
+
+    return response
+};
+
+export const getAssetByIdService = async (id: number) => {
+    const data = await AssetRepository.findAssetById(id);
+
+    let response = null;
+
+    if (data){
+        response = HttpResponse.ok(data)
+    }else{
+        response = HttpResponse.noContent()
     }
 
     return response
