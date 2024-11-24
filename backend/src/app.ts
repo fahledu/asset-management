@@ -1,13 +1,12 @@
 import express, { Request, Response } from "express";
+import { getAsset } from "./controllers/assetController";
 
 function createApp() {
 
     const app = express();
     app.use(express.json());
 
-    app.get("/", (req: Request, res: Response) => {
-        res.status(200).json({ asset: "tablet" });
-    });
+    app.get("/", getAsset);
 return app;
 }
 
