@@ -13,3 +13,7 @@ export const findAllAssets = async (): Promise<AssetModel[]> => {
 export const findAssetById = async (id: number): Promise<AssetModel | undefined> => {
     return database.find(asset => asset.id === id )
 }
+
+export const insertAsset = async (asset: AssetModel) => {
+    database.push(asset)
+}
